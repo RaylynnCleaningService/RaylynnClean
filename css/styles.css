@@ -1,0 +1,936 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* Global Styles */
+:root {
+    --primary-color: #d0b281; /* Updated Gold/Beige */
+    --secondary-color: #F8F8F8; /* Off-white for hover effects or secondary details */
+    --background-dark: #2A3045; /* Dark Blue/Grey from card */
+    --background-light: #3A4055; /* Slightly lighter Blue/Grey for subtle contrast */
+    --accent-color: var(--primary-color);
+    --text-color: var(--primary-color); /* Main text is Gold */
+    --light-text: var(--secondary-color); /* Keep off-white for specific uses */
+    --dark-text: var(--background-dark); /* Text on gold buttons */
+    --border-radius: 5px;
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    --transition: all 0.3s ease;
+    --heading-font: 'Cinzel', serif;
+    --body-font: 'Lora', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Ensure smooth scrolling globally */
+}
+
+body {
+    font-family: var(--body-font);
+    line-height: 1.7;
+    color: var(--light-text); /* Default text color to off-white */
+    background-color: var(--background-dark); /* Keep overall page background dark */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 16px; /* Base font size */
+}
+
+/* Style for Three.js Canvas */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; /* Place behind all other content */
+    display: block; /* Remove potential extra space */
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 15px; /* Slightly reduce horizontal padding */
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--secondary-color); /* Hover to off-white */
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px; /* Increase space after title */
+    font-size: 2.2rem;
+    color: var(--primary-color); /* Gold titles */
+    position: relative;
+    padding-bottom: 15px;
+    font-family: var(--heading-font);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--dark-text); /* Dark text on gold button */
+    border-radius: 8px; /* Slightly more rounded */
+}
+
+.btn-primary:hover {
+    background-color: #e0c291; /* Lighter version of new gold */
+    color: var(--dark-text);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color); /* Gold border */
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--dark-text);
+}
+
+/* Header Styles */
+#header {
+    background-color: rgba(58, 64, 85, 0.8); /* Semi-transparent lighter blue/grey */
+    box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 20px 0; /* Increased padding slightly for more space */
+    border-bottom: 1px solid transparent; /* Placeholder for transition */
+    transition: border-color 0.3s ease; /* Add transition for border */
+}
+
+#header.sticky {
+     border-bottom-color: rgba(208, 178, 129, 0.2); /* Faint NEW gold border when sticky */
+}
+
+#header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex; /* Align images horizontally */
+    align-items: center; /* Vertically align images */
+    gap: 15px; /* Space between images */
+}
+
+.corporate-sign-img {
+    max-height: 65px; /* Increased size further */
+}
+
+.main-logo-img {
+    max-height: 60px; /* Reverted size */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu {
+    display: flex;
+}
+
+.nav-menu li {
+    margin-left: 25px;
+}
+
+.nav-menu a {
+    color: var(--text-color); /* Gold text */
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
+    width: 100%;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--primary-color); /* Gold toggle icon */
+}
+
+/* Hero Section */
+#hero {
+    /* REMOVED MISSING IMAGE */
+    /* background-color: var(--background-dark); REMOVE Dark Blue/Grey fallback */
+    /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); */ /* Remove gradient */
+    background-size: cover;
+    background-position: center;
+    color: var(--light-text);
+    padding: 150px 0; /* Increased padding */
+    text-align: center;
+    display: flex; /* Use flex to center content vertically */
+    align-items: center;
+    min-height: 60vh; /* Give it some minimum height */
+}
+
+.hero-headline-wrapper {
+    display: flex;
+    align-items: center; /* Vertically align image and text */
+    justify-content: flex-start; /* Align group to the start */
+    gap: 20px; /* Space between image and text (Reduced further) */
+    margin-bottom: 30px; /* Space below headline group */
+    flex-wrap: nowrap; /* Prevent wrapping on small screens */
+}
+
+.hero-headline-image {
+    max-height: 130px; /* Make image even larger */
+    height: auto;
+    border-radius: var(--border-radius); /* Optional rounding */
+    border: 2px solid var(--primary-color); /* Gold border */
+    opacity: 0; /* Start hidden */
+    /* transform: scale(0.95); REMOVE - No longer scaling */
+    animation: fadeSlideUp 0.6s ease-out 0.5s forwards; /* Start image animation early (0.5s delay) */
+    flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.hero-content {
+    max-width: 800px; /* Limit width of text content */
+    margin: 0 auto; /* Center the content block */
+}
+
+.hero-content h1 {
+    /* font-size: 3rem; REMOVE Fixed size */
+    font-size: clamp(1.2rem, 3vw + 1rem, 2.5rem); /* Responsive font size (Smaller max/min) */
+    /* margin-bottom: 15px; REMOVED - Handled by wrapper */
+    font-family: var(--heading-font);
+    text-align: left; /* Align headline text left */
+    flex-grow: 1; /* Allow h1 to take remaining space */
+    /* white-space: nowrap; REMOVE - Allow wrapping at <br> */
+    line-height: 1.3; /* Adjust spacing between lines */
+    /* overflow: hidden; REMOVE - Allow potential overflow */
+    /* text-overflow: ellipsis; REMOVE - Don't use ellipsis */
+}
+
+.hero-content .tagline {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-bottom: 20px;
+    color: var(--primary-color); /* Keep tagline Gold */
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    /* color: var(--light-text); REMOVE - Inherited from body */
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Services Section */
+#services {
+    padding: 80px 0; /* Consistent section padding */
+    /* background-color: var(--background-dark); REMOVE BG */
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Force 4 equal columns */
+    gap: 30px; /* Reduce gap slightly to help fit */
+}
+
+.service-card,
+.about-card,
+.testimonial-card {
+    background-color: rgba(58, 64, 85, 0.75); /* REINSTATE - Slightly less transparent */
+    border-radius: var(--border-radius);
+    /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); REMOVE - Cleaner look */
+    padding: 30px; /* Adjusted padding */
+    border: 1px solid rgba(208, 178, 129, 0.2); /* REINSTATE - Faint gold border */
+    transition: var(--transition);
+}
+
+/* Keep text-align specific where needed */
+.service-card { text-align: center; }
+/* .about-card { text-align: left; } Keep default alignment */
+.testimonial-card { position: relative; /* Keep for ::before */ }
+
+.service-card:hover,
+.about-card:hover, /* REINSTATE Hover effect for elegance */
+.testimonial-card:hover {
+    transform: translateY(-6px) scale(1.02); /* Refined hover */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color); /* Gold icon */
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color); /* Gold heading */
+    font-family: var(--heading-font);
+}
+
+.service-card p {
+    margin-bottom: 20px;
+    color: var(--light-text); /* Change service text to light for consistency */
+}
+
+.read-more {
+    color: var(--primary-color); /* Gold link */
+    font-weight: 500;
+    position: relative;
+}
+
+.read-more::after {
+    content: '\u2192';
+    margin-left: 5px;
+    transition: var(--transition);
+}
+
+.read-more:hover::after {
+    margin-left: 10px;
+}
+
+/* About Section */
+#about {
+    padding: 80px 0; /* Consistent section padding */
+    /* background-color: var(--background-dark); REMOVE BG - Handled by body */
+}
+
+.about-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px; /* Increased gap slightly */
+}
+
+.about-card h3 {
+    color: var(--primary-color);
+    font-family: var(--heading-font);
+    font-size: 1.6rem; /* Slightly larger heading */
+    margin-bottom: 25px; /* Increased space below heading */
+}
+
+.about-card p,
+.about-card li { /* Keep li for potential future use, but style p primarily */
+    /* color: var(--light-text); REMOVE - Inherited from body */
+    margin-bottom: 15px; /* Slightly increased spacing */
+    line-height: 1.8; /* More spacing between lines */
+}
+
+.about-card p:last-child {
+    margin-bottom: 0; /* Remove margin from last paragraph */
+}
+
+.about-card ul { /* Remove default list styles if ul is ever used */
+    list-style: none;
+    padding-left: 0;
+}
+
+/* Styles for the new Values List */
+.values-list {
+    margin-top: 10px; /* Space below the 'Our Values' h3 */
+}
+
+.value-item {
+    display: flex;
+    align-items: flex-start; /* Align icon top with text */
+    margin-bottom: 25px; /* Space between value items */
+}
+
+.value-item:last-child {
+    margin-bottom: 0;
+}
+
+.value-item i {
+    font-size: 1.5rem; /* Icon size */
+    color: var(--primary-color);
+    margin-right: 18px; /* Space between icon and text */
+    margin-top: 5px; /* Align icon vertically better with h4 */
+    width: 25px; /* Fixed width for alignment */
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.value-text h4 {
+    font-family: var(--heading-font);
+    color: var(--secondary-color); /* Off-white value title */
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.value-text p {
+    /* color: var(--light-text); REMOVE - Inherited from body */
+    font-size: 0.95rem; /* Slightly smaller than main paragraph text */
+    line-height: 1.6;
+    margin-bottom: 0; /* Remove default paragraph margin */
+}
+
+/* New Banner Image Styles */
+/*
+.about-banner-image {
+    margin-bottom: 40px; 
+    border-radius: var(--border-radius);
+    border: 2px solid var(--primary-color); 
+    line-height: 0; 
+    display: inline-block; 
+    max-width: 100%; 
+}
+
+.about-banner-image img {
+    display: block; 
+    max-width: 100%;
+    height: auto; 
+    object-fit: contain; 
+    box-sizing: border-box; 
+    max-height: 150px; 
+}
+*/
+
+/* Center the banner container within its grid area */
+/*
+.about-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px; 
+}
+*/
+
+/* Remove centering rule for old banner */
+/*
+#about > .container > .about-banner-image {
+   display: block; 
+   margin-left: auto;
+   margin-right: auto;
+   width: fit-content; 
+}
+*/
+
+/* Testimonials Section */
+#testimonials {
+    padding: 80px 0; /* Consistent section padding */
+    /* background-color: var(--background-dark); REMOVE BG */
+}
+
+.testimonial-slider {
+    /* Reset slider-specific styles */
+    /* overflow: hidden; */
+    /* position: relative; */
+    width: 100%;
+    /* margin-bottom: 40px; */
+    /* Use Grid for layout */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 40px; /* Increased gap slightly */
+}
+
+/* Remove slider-specific styles */
+/* .testimonial-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out; 
+} */
+
+.testimonial-card::before {
+    content: '\201C'; /* Opening quote */
+    font-size: 4rem;
+    color: var(--primary-color);
+    opacity: 0.3; /* Slightly more visible */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    line-height: 1;
+    z-index: 0; /* Ensure it's behind content if needed */
+    /* Apply the rotation animation */
+    display: inline-block; /* Needed for transform */
+    animation: rotate-quote 20s linear infinite; /* name duration timing-function iteration-count */
+}
+
+.testimonial-content p {
+    font-style: italic;
+    margin-bottom: 15px;
+    font-family: var(--body-font);
+}
+
+.testimonial-author p {
+    font-weight: 600;
+    text-align: right;
+}
+
+.view-more {
+    text-align: center;
+}
+
+/* Contact Section */
+#contact {
+    padding: 80px 0; /* Consistent section padding */
+    /* background: var(--background-light); REMOVE BG */
+    background-size: cover;
+    background-position: center;
+    color: var(--text-color); /* Gold text default */
+    text-align: center;
+}
+
+#contact .section-title {
+    margin-bottom: 20px; /* Reduced margin */
+}
+
+#contact > .container > p { /* Target the intro paragraph */
+    margin-bottom: 30px; /* Reduced margin */
+    /* color: var(--light-text); REMOVE - Inherited from body */
+}
+
+.contact-content {
+    display: flex;
+    gap: 40px; /* Space between form and info */
+    flex-wrap: wrap; /* Allow stacking on smaller screens */
+    margin-top: 40px; /* Add space below intro paragraph */
+    text-align: left; /* Override section's text-align center */
+}
+
+.contact-form,
+.contact-info {
+    flex: 1; /* Allow both columns to grow */
+    min-width: 300px; /* Minimum width before stacking */
+}
+
+#cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-family: var(--heading-font);
+}
+
+#cta p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--light-text); /* Set contact intro paragraph to Off-white for readability */
+}
+
+/* Footer Styles */
+#footer {
+    background-color: rgba(58, 64, 85, 0.8); /* Semi-transparent footer bg */
+    color: var(--text-color); /* Gold text default */
+    padding: 40px 0 15px; /* Reduced padding */
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-logo img {
+    max-height: 60px;
+    margin-bottom: 15px;
+    /* Optional: Add filter to make logo gold if it's not already */
+    /* filter: brightness(0) saturate(100%) invert(81%) sepia(13%) saturate(939%) hue-rotate(10deg) brightness(90%) contrast(88%); */
+}
+
+.footer-logo p { /* Tagline in footer */
+    color: var(--primary-color); /* Keep tagline gold */
+    font-style: italic;
+}
+
+.footer-contact h3,
+.footer-links h3,
+.footer-hours h3 { /* Footer headings explicitly gold */
+    color: var(--primary-color);
+    font-family: var(--heading-font);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.footer-contact p { /* Ensure contact text is light */
+    color: var(--light-text);
+    margin-bottom: 8px; /* Adjust spacing */
+}
+
+.footer-contact i,
+.footer-links i {
+    margin-right: 10px;
+    color: var(--primary-color); /* Gold icons */
+}
+
+.footer-links a {
+    color: var(--text-color); /* Gold links */
+}
+
+.footer-links a:hover {
+    color: var(--secondary-color); /* Hover to off-white */
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(208, 178, 129, 0.2);
+    color: rgba(208, 178, 129, 0.7); /* Faded NEW gold for copyright */
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Hidden by default */
+    width: 300px;
+    height: 100vh;
+    background-color: rgba(42, 48, 69, 0.9); /* Semi-transparent dark blue/grey */
+    z-index: 2000;
+    padding: 40px 20px;
+    transition: var(--transition);
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: var(--primary-color); /* Gold close icon */
+    cursor: pointer;
+}
+
+.mobile-menu ul {
+    margin-top: 50px;
+}
+
+.mobile-menu li {
+    margin-bottom: 20px;
+}
+
+.mobile-menu a {
+    color: var(--primary-color); /* Keep mobile links gold */
+    font-size: 1.2rem;
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(208, 178, 129, 0.2);
+}
+
+.mobile-menu a:hover {
+    color: var(--secondary-color); /* Hover to off-white */
+}
+
+/* Animations */
+.animated-slide-item {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95); /* Start slightly lower and smaller */
+    transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+}
+
+.animated-slide-item.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1); /* End at normal position and size */
+}
+
+/* Add input error styling */
+.input-error {
+    border-color: #ff6b6b !important; /* Use a lighter red for dark bg */
+    box-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+}
+
+main {
+    flex: 1;
+}
+
+/* Button Placement Adjustments */
+#about .btn,
+#services .btn,
+#testimonials .btn {
+    margin-top: 30px; /* Add space above the buttons */
+}
+
+/* Contact Form Specifics */
+#contact {
+    background-color: var(--background-dark);
+}
+
+.contact-form label {
+    color: var(--primary-color); /* Gold labels */
+    display: block;
+    margin-bottom: 3px; /* Reduced margin */
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    width: 100%;
+    padding: 8px; /* Reduced padding */
+    margin-bottom: 10px; /* Reduced margin */
+    border: 1px solid rgba(208, 178, 129, 0.5);
+    background-color: rgba(58, 64, 85, 0.7); /* Semi-transparent input bg */
+    color: var(--light-text); /* Input text off-white */
+    border-radius: var(--border-radius);
+    font-family: var(--body-font); /* Ensure body font */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(208, 178, 129, 0.5); /* NEW Gold focus glow */
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(248, 248, 248, 0.6); /* Lighter placeholder text */
+}
+
+.form-button-wrapper {
+    text-align: left; /* Align button left */
+    margin-top: 15px; /* Add some space above the button */
+}
+
+.contact-form button[type="submit"] {
+    /* Ensure primary button styles are applied */
+    /* Add any specific overrides if needed */
+    padding: 10px 30px; /* Adjust padding */
+}
+
+.contact-info {
+    text-align: left;
+    display: flex; /* Arrange children side-by-side */
+    justify-content: space-between; /* Space them out */
+    gap: 40px; /* Add gap between columns */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.contact-details,
+.contact-hours {
+    flex: 1; /* Allow columns to grow */
+    min-width: 250px; /* Minimum width before wrapping */
+}
+
+.contact-info h3 {
+    color: var(--primary-color);
+    font-family: var(--heading-font);
+    margin-bottom: 15px; /* Adjusted margin */
+    margin-top: 25px; /* Add space above headings */
+    font-size: 1.4rem;
+}
+
+.contact-info h3:first-of-type {
+    margin-top: 0; /* No top margin for the first heading */
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    margin-bottom: 15px; /* Space between items */
+}
+
+.contact-item i {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-right: 15px;
+    margin-top: 5px; /* Align icon slightly lower */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    width: 20px; /* Give icon a fixed width */
+    text-align: center;
+}
+
+.contact-item div {
+    flex-grow: 1; /* Allow text block to take remaining space */
+}
+
+.contact-item p {
+    margin-bottom: 5px; /* Tighter spacing for lines within an item */
+    /* color: var(--light-text); REMOVE - Inherited from body */
+    line-height: 1.5;
+}
+
+.contact-item strong {
+    color: var(--primary-color); /* Highlight labels */
+    display: block;
+    margin-bottom: 3px;
+}
+
+.contact-item.hours-item p {
+     margin-bottom: 2px; /* Even tighter spacing for hours */
+}
+
+.contact-info a {
+    color: var(--primary-color);
+}
+
+.contact-info a:hover {
+    color: var(--secondary-color);
+}
+
+/* Specific Headline Animations */
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Increase starting distance slightly */
+    }
+    80% { /* Overshoot slightly */
+        opacity: 1;
+        transform: translateY(-5px);
+    }
+    to { /* Settle back */
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* New Animation for Image Scale In */
+/*
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95); 
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+*/
+
+@keyframes changeColorToWhite {
+    from { color: var(--primary-color); } /* Start Gold */
+    to   { color: var(--light-text); } /* End White */
+}
+
+@keyframes changeColorToGold {
+    from { color: var(--light-text); } /* Start White */
+    to   { color: var(--primary-color); } /* End NEW Gold */
+}
+
+.hero-content h1 span {
+    display: inline-block; /* Needed for transform/animation */
+    opacity: 0; /* Start hidden */
+}
+
+#headline-spotless {
+    animation: fadeSlideUp 0.6s ease-out 1.2s forwards;
+}
+
+#headline-spaces {
+    color: var(--primary-color); /* Initial gold color */
+    animation: 
+        fadeSlideUp 0.6s ease-out 1.4s forwards, 
+        changeColorToWhite 0.5s linear 2.1s forwards;
+}
+
+#headline-comma {
+    animation: fadeSlideUp 0.6s ease-out 1.45s forwards;
+}
+
+#headline-satisfied {
+    color: var(--light-text); /* Start white */
+    animation: 
+        fadeSlideUp 0.6s ease-out 1.6s forwards, 
+        changeColorToGold 0.5s linear 2.7s forwards;
+}
+
+.google-review-button-wrapper {
+    text-align: center;
+    margin-top: 40px; /* Space above button */
+}
+
+#google-review-link i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+/* Specific styling for the Our Story card */
+.our-story-card {
+    padding: 35px; /* Slightly more padding */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Add very subtle shadow */
+}
+
+.our-story-card h3 {
+    font-size: 1.8rem; /* Make heading slightly larger */
+    position: relative; /* For pseudo-element positioning */
+    padding-bottom: 10px; /* Space for the underline */
+    margin-bottom: 30px; /* More space below heading + underline */
+    text-align: center; /* Center the heading text */
+}
+
+.our-story-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%; /* Center the underline */
+    transform: translateX(-50%); /* Adjust position for centering */
+    width: 60px; /* Width of the underline (slightly wider) */
+    height: 3px; /* Thickness of the underline */
+    background-color: var(--primary-color); /* Gold underline */
+    opacity: 0.8; /* Slightly subdued */
+}
+
+.our-story-card p {
+    line-height: 1.8; /* Adjust line spacing */
+    font-size: 0.95rem; /* Slightly smaller paragraph text */
+    margin-bottom: 15px; /* Consistent space between paragraphs */
+}
+
+.our-story-card p:last-child {
+    margin-bottom: 0; /* Remove margin from last paragraph */
+}

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAYLYNN CLEANING SERVICES - Professional Cleaning Services</title>
+    <meta name="description" content="RAYLYNN CLEANING SERVICES offers professional residential and commercial cleaning services. Your satisfaction is our priority.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add Three.js Library -->
+    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@v0.159.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@v0.159.0/examples/jsm/"
+        }
+      }
+    </script>
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    <!-- Header Section -->
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <img src="images/corporatesign.png" alt="Corporate Sign" class="corporate-sign-img">
+                <a href="#hero">
+                    <img src="images/logo.png" alt="RAYLYNN CLEANING SERVICES Logo" class="main-logo-img">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div class="mobile-menu">
+        <div class="close-menu">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-headline-wrapper">
+                        <!-- Move Image Here -->
+                        <img src="images/about-preview.png" alt="Raylynn Cleaning Highlight" class="hero-headline-image">
+                        <h1> 
+                            <span id="headline-spotless">Spotless</span> 
+                            <span id="headline-spaces">Spaces</span><span id="headline-comma">,</span><br>
+                            <span id="headline-satisfied">Satisfied Clients</span>
+                        </h1>
+                    </div>
+                    <p class="tagline animated-slide-item">"Your satisfaction is our priority"</p>
+                    <p class="animated-slide-item">Professional cleaning services for residential and commercial spaces</p>
+                    <div class="cta-buttons animated-slide-item">
+                        <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+                        <a href="#services" class="btn btn-secondary">Our Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section (Combined Preview and Full) -->
+        <section id="about">
+            <div class="container">
+                <!-- Remove Image Banner from here -->
+                <!-- 
+                <div class="about-banner-image">
+                    <img src="images/about-preview.png" alt="About RAYLYNN CLEANING SERVICES Banner">
+        </div>
+                -->
+                
+                <div class="about-cards-grid">
+                    <!-- Intro Text Card -->
+                    <div class="about-card our-story-card animated-slide-item">
+                        <h3>Our Story</h3>
+                        <p>Founded by Raymon and Lynn Gapusan, RAYLYNN CLEANING SERVICES emerged from a commitment to exceptional cleaning, meticulous attention to detail, and genuine customer satisfaction.</p>
+                        <p>With years of experience and a shared passion for pristine spaces, we ensure every environment we touch isn't just clean, but truly spotless. We strive to build lasting client relationships founded on trust, reliability, and consistently superior results.</p>
+        </div>
+
+                    <!-- Values Card -->
+                    <div class="about-card animated-slide-item">
+                        <h3>Our Values</h3>
+                        <div class="values-list">
+                            <div class="value-item">
+                                <i class="fas fa-heart"></i>
+                                <div class="value-text">
+                                    <h4>Customer Focus</h4>
+                                    <p>Your needs and satisfaction are the driving force behind everything we do.</p>
+                                </div>
+                            </div>
+                            <div class="value-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <div class="value-text">
+                                    <h4>Integrity</h4>
+                                    <p>We operate with unwavering honesty and transparency in all our interactions.</p>
+                                </div>
+                            </div>
+                            <div class="value-item">
+                                <i class="fas fa-star"></i>
+                                <div class="value-text">
+                                    <h4>Quality</h4>
+                                    <p>Employing effective techniques and premium products to deliver a superior clean.</p>
+                                </div>
+                            </div>
+                            <div class="value-item">
+                                <i class="fas fa-handshake"></i>
+                                <div class="value-text">
+                                    <h4>Reliability</h4>
+                                    <p>You can depend on us to be punctual, professional, and consistently deliver outstanding results.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section (Combined Overview and Full) -->
+        <section id="services">
+            <div class="container">
+                <h2 class="section-title animated-slide-item">Our Cleaning Services</h2>
+                <div class="services-grid">
+                    <div class="service-card animated-slide-item" id="residential">
+                        <div class="service-icon"><i class="fas fa-home"></i></div>
+                        <h3>Residential Cleaning</h3>
+                        <p>Comprehensive cleaning services for homes of all sizes. We cover kitchens, bathrooms, bedrooms, living areas, dusting, vacuuming, mopping, and more. Customizable plans available.</p>
+                    </div>
+                    <div class="service-card animated-slide-item" id="commercial">
+                        <div class="service-icon"><i class="fas fa-building"></i></div>
+                        <h3>Commercial Cleaning</h3>
+                        <p>Professional cleaning solutions for offices, retail spaces, and other commercial properties. We ensure a clean, healthy, and productive work environment for your employees and clients.</p>
+                    </div>
+                    <div class="service-card animated-slide-item" id="move">
+                        <div class="service-icon"><i class="fas fa-box-open"></i></div>
+                        <h3>Move-In/Move-Out Cleaning</h3>
+                        <p>Take the stress out of moving with our specialized cleaning services. We'll deep clean the property before you move in or after you move out, ensuring it's spotless for the next occupants.</p>
+                    </div>
+                    <div class="service-card animated-slide-item" id="deep">
+                        <div class="service-icon"><i class="fas fa-broom"></i></div>
+                        <h3>Deep Cleaning</h3>
+                        <p>A thorough, top-to-bottom cleaning that reaches every corner and surface. Ideal for spring cleaning, special occasions, or getting your space exceptionally clean.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section (Combined Preview and Full) -->
+        <section id="testimonials">
+            <div class="container">
+                <h2 class="section-title animated-slide-item">What Our Clients Say</h2>
+                <div class="testimonial-slider">
+                    <div class="testimonial-card animated-slide-item">
+                        <div class="testimonial-content"><p>"RAYLYNN CLEANING SERVICES exceeded my expectations. My home has never looked so clean and fresh. Highly recommended!"</p></div>
+                        <div class="testimonial-author"><p>- Sarah Johnson</p></div>
+                    </div>
+                    <div class="testimonial-card animated-slide-item">
+                        <div class="testimonial-content"><p>"Professional, thorough, and friendly service. They transformed our office space..."</p></div>
+                        <div class="testimonial-author"><p>- Michael Chen, Business Owner</p></div>
+                    </div>
+                    <div class="testimonial-card animated-slide-item">
+                        <div class="testimonial-content"><p>"Reliable and consistent quality. We've been using RAYLYNN for our monthly deep cleaning..."</p></div>
+                        <div class="testimonial-author"><p>- Emma Rodriguez</p></div>
+                    </div>
+                </div>
+                 <!-- Add Google Review Button -->
+                 <div class="google-review-button-wrapper animated-slide-item">
+                    <a href="#" id="google-review-link" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-google"></i> Leave a Google Review
+                    </a>
+                 </div>
+        </div>
+        </section>
+
+        <!-- Contact Section (Was CTA + New Form) -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title animated-slide-item">Get in Touch</h2>
+                <p class="animated-slide-item">Ready for a cleaner space? Contact us today for your free, no-obligation quote!</p>
+                <div class="contact-content">
+                    <div class="contact-form animated-slide-item">
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone (Optional):</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Service Interested In:</label>
+                                <select id="service" name="service">
+                                    <option value="">--Select a Service--</option>
+                                    <option value="Residential">Residential Cleaning</option>
+                                    <option value="Commercial">Commercial Cleaning</option>
+                                    <option value="Move-In/Out">Move-In/Out Cleaning</option>
+                                    <option value="Deep Cleaning">Deep Cleaning</option>
+                                    <option value="Other">Other/Quote Request</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message:</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <div class="form-group form-button-wrapper">
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="contact-info animated-slide-item">
+                        <div class="contact-details">
+                            <h3>Contact Information</h3>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <strong>Phone:</strong>
+                                    <p>647-770-8992</p>
+                                    <p>416-827-2231</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email:</strong>
+                                    <p><a href="mailto:raylynncleaningservices@gmail.com">raylynncleaningservices@gmail.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-hours">
+                            <h3>Business Hours</h3>
+                            <div class="contact-item hours-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+                                    <p>Saturday: 9:00 AM - 4:00 PM</p>
+                                    <p>Sunday: Closed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#hero"><img src="images/logo.png" alt="RAYLYNN CLEANING SERVICES Logo"></a>
+                    <p>"Your satisfaction is our priority"</p>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-phone"></i> 647-770-8992 | 416-827-2231</p>
+                    <p><i class="fas fa-envelope"></i> raylynncleaningservices@gmail.com</p>
+                </div>
+                <div class="footer-quick-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RAYLYNN CLEANING SERVICES. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+    <!-- Three.js Background Script -->
+    <script type="module">
+        import * as THREE from 'three';
+
+        // Basic Setup
+        const canvas = document.getElementById('bg-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true }); // alpha: true for transparent bg
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        camera.position.z = 5;
+
+        // Particle Geometry
+        const particleCount = 1500;
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+        const goldColor = new THREE.Color(0xC4B454); // Use theme color
+
+        for (let i = 0; i < particleCount; i++) {
+            const i3 = i * 3;
+            // Position particles randomly in a larger volume
+            positions[i3    ] = (Math.random() - 0.5) * 20; // x
+            positions[i3 + 1] = (Math.random() - 0.5) * 20; // y
+            positions[i3 + 2] = (Math.random() - 0.5) * 10; // z (shallower)
+
+            // Set color
+            colors[i3    ] = goldColor.r;
+            colors[i3 + 1] = goldColor.g;
+            colors[i3 + 2] = goldColor.b;
+        }
+
+        const particleGeometry = new THREE.BufferGeometry();
+        particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        particleGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        // Particle Material
+        const particleMaterial = new THREE.PointsMaterial({
+            size: 0.02,
+            sizeAttenuation: true,
+            vertexColors: true,
+            transparent: true,
+            alphaMap: createCircleTexture(), // Soft circular particle texture
+            depthWrite: false, // Helps with transparency issues
+             blending: THREE.AdditiveBlending // Brighter particles
+        });
+
+        // Particle System
+        const particles = new THREE.Points(particleGeometry, particleMaterial);
+        scene.add(particles);
+
+        // Helper to create a simple circular texture for particles
+        function createCircleTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 64;
+            canvas.height = 64;
+            const context = canvas.getContext('2d');
+            const gradient = context.createRadialGradient(32, 32, 0, 32, 32, 32);
+            gradient.addColorStop(0, 'rgba(255,255,255,1)');
+            gradient.addColorStop(0.5, 'rgba(255,255,255,0.8)');
+            gradient.addColorStop(1, 'rgba(255,255,255,0)');
+            context.fillStyle = gradient;
+            context.fillRect(0, 0, 64, 64);
+            return new THREE.CanvasTexture(canvas);
+        }
+
+        // Scroll Interaction
+        let scrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            scrollY = window.scrollY;
+        });
+
+        // Animation Loop
+        const clock = new THREE.Clock();
+        const animate = () => {
+            const elapsedTime = clock.getElapsedTime();
+
+            // Rotate particles slowly
+            particles.rotation.y = elapsedTime * 0.05;
+            particles.rotation.x = elapsedTime * 0.02;
+
+            // Move camera slightly based on scroll (subtle parallax)
+            // Adjust the multiplier for more/less effect
+            camera.position.y = - (scrollY / window.innerHeight) * 2;
+
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        };
+
+        animate();
+
+        // Handle Resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        });
+
+    </script>
+</body>
+</html> 

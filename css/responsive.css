@@ -1,0 +1,207 @@
+/* Responsive Styles */
+
+/* --- Base Mobile Styles (Applied first, e.g., max-width: 767.98px) --- */
+@media (max-width: 767.98px) {
+    body {
+        font-size: 15px; /* Slightly smaller base font */
+    }
+
+    .container {
+        padding: 0 10px; /* Tighter padding */
+    }
+    
+    /* Header & Navigation */
+    #header {
+        padding: 15px 0; /* Reduced header padding */
+    }
+    .logo {
+        gap: 10px; /* Reduced logo gap */
+    }
+    .corporate-sign-img { max-height: 45px; }
+    .main-logo-img { max-height: 50px; }
+
+    .nav-menu {
+        display: none; /* Hide desktop menu */
+    }
+    .mobile-menu-toggle {
+        /* display: block; REMOVE - Hide non-functional button */
+        font-size: 1.8rem; /* Ensure toggle is easily tappable */
+    }
+    
+    /* Hero Section */
+    #hero {
+        padding: 80px 0 50px; /* Adjusted padding */
+        min-height: auto; /* Remove min height */
+        text-align: center; /* Center align all hero content */
+    }
+    .hero-headline-wrapper {
+        flex-direction: column; /* Stack image and title */
+        gap: 15px; /* Reduced gap for stacked items */
+        margin-bottom: 20px;
+        align-items: center; /* Center items horizontally */
+    }
+    .hero-headline-image {
+        max-height: 70px; /* Smaller image on mobile */
+        margin: 0 auto 10px; /* Center image and add space below */
+    }
+    .hero-content h1 {
+        font-size: 1.8rem; /* Slightly smaller */
+        text-align: center; /* Center headline text */
+        line-height: 1.4; /* Adjust line height for stacked */
+    }
+    .hero-content .tagline {
+        font-size: 1.1rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+        max-width: 90%; /* Allow slightly wider paragraphs */
+    }
+    .cta-buttons {
+        flex-direction: column;
+        gap: 15px; /* Adjusted gap */
+        max-width: 300px;
+        margin: 0 auto;
+        align-items: center;
+    }
+    
+    /* Section Titles */
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+    }
+    .section-title::after {
+        width: 60px; /* Smaller underline */
+    }
+
+    /* Grid Layouts */
+    .services-grid,
+    .about-cards-grid,
+    .testimonial-slider { /* Testimonial Grid */
+        grid-template-columns: 1fr; /* Force single column */
+        gap: 25px; /* Adjusted gap */
+        /* max-width: 450px; REMOVE - Let it fill container */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Cards */
+    .service-card,
+    .about-card,
+    .testimonial-card {
+        padding: 20px; /* Reduced card padding */
+    }
+    
+    /* Reset Our Story Specifics */
+    .our-story-card h3 {
+        font-size: 1.5rem; /* Adjust size */
+        text-align: left; /* Align left on mobile */
+        padding-bottom: 8px;
+        margin-bottom: 20px;
+    }
+    .our-story-card h3::after {
+        left: 0; /* Align underline left */
+        transform: none; /* Remove centering transform */
+        width: 40px; /* Make underline smaller */
+    }
+    .our-story-card p {
+        font-size: 0.9rem; /* Slightly smaller text */
+    }
+
+    /* Values List Adjustments */
+    .value-item i {
+         font-size: 1.3rem;
+         margin-right: 12px;
+         width: 20px;
+    }
+    .value-text h4 {
+        font-size: 1.1rem;
+    }
+    .value-text p {
+        font-size: 0.9rem;
+    }
+
+    /* Testimonial Quote */
+    .testimonial-card::before {
+        font-size: 3rem; /* Smaller quote mark */
+        top: 5px;
+        left: 5px;
+    }
+
+    /* Contact Section */
+    #contact {
+        padding: 50px 0; /* Reduced padding */
+    }
+    .contact-content {
+        flex-direction: column; /* Ensure stacking */
+        gap: 30px;
+        margin-top: 20px;
+    }
+    .contact-form,
+    .contact-info {
+        min-width: unset; /* Remove min-width */
+    }
+    .contact-info {
+        text-align: center; /* Center text when stacked */
+    }
+    .contact-info h3 {
+        margin-top: 15px;
+        font-size: 1.3rem;
+    }
+    .contact-item {
+        justify-content: center; /* Center icon/text group */
+        text-align: left; /* Keep text left-aligned within the centered group */
+        max-width: 300px; /* Limit width for better centering */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 25px;
+        margin-bottom: 25px;
+    }
+    .footer-logo img {
+        margin: 0 auto 10px;
+    }
+}
+
+/* --- Optional: Further adjustments for very small screens (e.g., max-width: 575.98px) --- */
+@media (max-width: 575.98px) {
+    .hero-content h1 {
+        font-size: 1.6rem; /* Even smaller */
+    }
+    .section-title {
+        font-size: 1.6rem;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        width: 80%; /* Make buttons wider */
+        max-width: 280px;
+    }
+    .services-grid,
+    .about-cards-grid,
+    .testimonial-slider {
+        gap: 20px; /* Tighter gap */
+    }
+    .value-item {
+        margin-bottom: 20px;
+    }
+}
+
+/* --- Optional: Tablet adjustments (if needed beyond auto-fit grids) --- */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    /* Example: Maybe adjust grid columns specifically for tablets */
+    .services-grid { grid-template-columns: 1fr 1fr; } 
+    .about-cards-grid { grid-template-columns: 1fr 1fr; }
+    .testimonial-slider { grid-template-columns: 1fr 1fr; }
+    .contact-content {
+        flex-direction: row; /* Side by side on tablet */
+    }
+}
+
+/* --- Large Desktop adjustments (if needed) --- */
+/* @media (min-width: 1200px) { ... } */
